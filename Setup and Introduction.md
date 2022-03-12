@@ -2,7 +2,18 @@
 
 https://app.buildspace.so/projects/CO02cf0f1c-f996-4f50-9669-cf945ca3fb0b/lessons/LE8f43618f-ffae-44ef-892b-2600adb2eba7
 
+
 ### Set up for Hardhat 
+
+First you have to install npm LTS package - https://nodejs.org/en/
+choose the LTS package 
+
+then type in 
+````
+npm install --save-dev- hardhat
+<after installing - you can run hardhat using npx>
+npx hardhat 
+````
 
 So in this case, i have tried to use Node Version Manager (nvm) 
 ```` terminal
@@ -18,4 +29,8 @@ nvm alias default 12
 
 npm install npm --global # Upgrade npm to the latest version
 ````
+
+
+
+
 
