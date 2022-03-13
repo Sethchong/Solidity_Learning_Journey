@@ -44,6 +44,36 @@ original variable. Thus, if your function changes the value of the variable it
 receives, the value of the original variable gets changed.
 
 
+#### Adding new items to the arrays
+```` solidity
+// create a New Person:
+Person satoshi = Person(172, "Satoshi");
+
+// Add that person to the Array:
+people.push(satoshi);
+
+// combining into 1 line of code:
+people.push(Person(16, "Vitalik"));
+````
+
+```` Solidity
+// create a struct
+struct Zombie {
+        string name;
+        uint dna;
+    }
+    // create an array and call it zombies
+    Zombie[] public zombies;
+
+    // create a function to add new item to the array - taking input from the function arguments
+    function createZombie (string memory _name, uint _dna) public {
+        // start here
+        zombies.push(Zombie(_name, _dna));
+    }
+
+````
+
+
 
 
 
