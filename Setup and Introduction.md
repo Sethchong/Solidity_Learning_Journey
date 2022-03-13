@@ -2,8 +2,18 @@
 
 https://app.buildspace.so/projects/CO02cf0f1c-f996-4f50-9669-cf945ca3fb0b/lessons/LE8f43618f-ffae-44ef-892b-2600adb2eba7
 
-#### questions that need answering: 
+### Questions that need answering: 
+
 1. what is a node? why we do we need to use node.js? 
+    - it is a RTE for executing JS 
+    - often used to build back-end services such as API 
+    - the main benefits are it is superfast and highly scalable and great for prototyping in an agile dev  
+2. what is runtime environment (RTE)
+    - it is the env in which a program or app is executed - that is also why sometimes you get runtime errors 
+3. So why do we need to use Node.js and JS with eth? 
+    - we use Node.js to interact with our local eth node and this is also how we can pass information about the smart contract to our Node.js application 
+
+
 
 
 
