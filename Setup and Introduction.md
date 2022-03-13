@@ -2,6 +2,11 @@
 
 https://app.buildspace.so/projects/CO02cf0f1c-f996-4f50-9669-cf945ca3fb0b/lessons/LE8f43618f-ffae-44ef-892b-2600adb2eba7
 
+#### questions that need answering: 
+1. what is a node? why we do we need to use node.js? 
+
+
+
 
 ### Set up for Hardhat 
 
