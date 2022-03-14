@@ -45,6 +45,40 @@ nvm alias default 12
 npm install npm --global # Upgrade npm to the latest version
 ````
 
+#### Constructor funtion
+
+Constructor is called when a contract is first created and can be used to set initial values. 
+
+##### so when do we need to use it? 
+When a contract is created on the block chain you can use the constructor to set state variables. For example when deploying your contract you can set:  
+
+Contract Owner – you can set the owner address at creation time
+Max amount – set the maximum amount of a token
+True or false values
+Any parameter that you want to save
+
+Constructor is a special function declared using constructor keyword. It is an optional funtion and is used to initialize state variables of a contract. Following are the key characteristics of a constructor.
+
+    - A contract can have only one constructor.
+
+    - A constructor code is executed once when a contract is created and it is used to initialize contract state.
+
+    - After a constructor code executed, the final code is deployed to blockchain. This code include public functions and code reachable through public functions. Constructor code or any internal method used only by constructor are not included in final code.
+
+    - A constructor can be either public or internal.
+
+    - A internal constructor marks the contract as abstract.
+
+    - In case, no constructor is defined, a default constructor is present in the contract.
+
+
+
+
+
+
+
+
+
 
 
 
