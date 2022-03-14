@@ -106,6 +106,104 @@ runMain();
 
 ````
 
+### Writing version 2 (documenting a wave)
+
+### Solidity
+```` solidity
+/ writing the smart contract
+
+// we want to be able to let someone wave at us and then store that wave - so we need to write a function to allow them to hit to wave at us 
+
+pragma solidity ^0.8.0; 
+
+import "hardhat/console.sol";
+
+contract WavePortal {
+
+    uint256 totalWaves;
+
+    // constructor is a special function that uses 
+    constructor(){
+        // console.log is also used in JS and the main function is to print any kind of variables defined before in it or to just print any message that needs to be displayed to the user 
+        console.log("Hello! I am a contract and I am smart!");
+    }
+
+    // writing a function to so that people can start waving at us 
+    function wave() public {
+        
+        // recall that we have previously defined totalWaves to be uint and this is a state variable that is automatically initalized to 0 
+        // recall that state variable is a variable with values that are permanently stored in a contract storage 
+        totalWaves += 1;
+
+        // msg.sender acts like a built-in authentication! because this is the wallet address of the person who has called the function 
+        // this allows us to know exactly who called the function because in order to even call a smart contract function, you need to be connected with a valid wallet
+        console.log("%s has waved!", msg.sender);
+    }
+
+    function getTotalWaves() public view returns (uint256) {
+        console.log("We have %d total waves!", totalWaves);
+        return totalWaves;
+    }
+
+
+}
+
+````
+### Javescript 
+```` javascript
+
+// writing a script to run our contract - because to test a smart contract we have to compile, deploy then execute 
+
+const main = async () => {
+    // In order to deploy something to the blockchain, we need to have a wallet address! Hardhat does this for us magically in the background, but here I grabbed the wallet address of contract owner and I also grabbed a random wallet address and called it randomPerson. This will make more sense in a moment.
+    const [owner, randomPerson] = await hre.ethers.getSigners();
+
+
+    const waveContractFactory = await hre.ethers.getContractFactory("WavePortal");
+
+    const waveContract = await waveContractFactory.deploy();
+
+    await waveContract.deployed();
+
+
+    console.log("Contract deployed to:", waveContract.address);
+
+    // this is just to see the address of the person deployingour contract! 
+    console.log("Contract deployed to:", owner.address);
+
+
+    // Basically, we need to manually call our functions! Just like we would any normal API. First I call the function to grab the # of total waves. Then, I do the wave. Finally, I grab the waveCount one more time to see if it changed.
+    let waveCount;
+    waveCount = await waveContract.getTotalWaves();
+
+    let waveTxn = await waveContract.wave();
+    await waveTxn.wait();
+
+    waveCount = await waveContract.getTotalWaves();
+
+    waveTxn = await waveContract.connect(randomPerson).wave();
+    await waveTxn.wait();
+
+    waveCount = waveContract.getaTotalWaves();
+};
+
+
+const runMain = async ( ) => {
+    try {
+        await main () ;
+        process.exit(0); // exit Node process without error
+    } catch (error) {
+            console. log (error);
+            process.exit(1); // exit Node process while indicating 'Uncaught Fatal Exception' error
+    }
+// Read more about Node exit ('process. exit (num)') status codes here: https://stackoverflow.com/a/4716
+};
+runMain();
+
+````
+
+
+
 
 
 
