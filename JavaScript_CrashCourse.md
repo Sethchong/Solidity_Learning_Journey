@@ -1,3 +1,4 @@
+### Basic Crashcourse
 ```` javascript
 // console.log acts like a print in JS 
 console.log('Hello World!');
@@ -60,3 +61,41 @@ let number = square(100);
 console.log(number);
 
 ````
+
+### Callbacks, Promises, Async, Await Crashcourse
+
+so sometimes we want to extract something from the server and it would get a couple of seconds for the data to return to us but we also don't want to stall while we wait for the data and we want to continue and keep doing something 
+
+
+
+```` javascript
+// callbacks / promises / async / await 
+
+````
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
