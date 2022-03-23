@@ -105,36 +105,152 @@ body.appendChild(div)
 so sometimes we want to extract something from the server and it would get a couple of seconds for the data to return to us but we also don't want to stall while we wait for the data and we want to continue and keep doing something 
 
 
+### Callback 
+```JS
+/ callbacks
 
-```` javascript
-// callbacks / promises / async / await 
+// callback is a function that passed as an argument to another function and this technique allows a function to call another function
+
+// first make a const of arrays
+
+const posts = [
+
+{ title: 'Post one', body: 'this is post one' },
+
+{ title: 'Post two', body: 'this is post two' }
+
+];
+
+// => means function (), they are both the same thing
+
+function getPosts() {
+
+setTimeout(() => {
+
+let output = '';
+
+// we want to loop through the posts here, gonna use for each method here
+
+posts.forEach((post, index) => {
+
+output += `<li> ${post.title} </li>`; // note that this is using a backtick, not ''
+
+});
+
+document.body.innerHTML = output;
+
+}, 1000); // 1000 is in miliSec
+}
+
+function createPost(post, callback) {
+
+setTimeout(() => {
+
+posts.push(post);
+
+callback();
+
+}, 2000); // 2 seconds
+
+}
+
+// TLDR, without the callback function, JS will run the first function named getPosts and wont run the second fucnction
+
+// by using callback on the second function, we are telling JS to run the 2nd function first then run the first function
+
+createPost({ title: 'Post Three', body: 'This is post three ' }, getPosts);
+```
+
+callback allows us to basically to have the control to run certain function first, instead of by sequence 
+
+***
+### Promise 
+#### https://javascript.info/promise-basics
+a promise is basically a function that allows us to move on while waiting for an answer while not crashing or waiting for the webpage to load 
+
+```js
+
+// first make a const of arrays
+
+const posts = [
+
+{ title: 'Post one', body: 'this is post one' },
+
+{ title: 'Post two', body: 'this is post two' }
+
+];
 
 
-````
+// => means function (), they are both the same thing
+  
+function getPosts() {
+
+setTimeout(() => {
+
+let output = '';
+
+// we want to loop through the posts here, gonna use for each method here
+
+posts.forEach((post, index) => {
+
+output += `<li> ${post.title} </li>`; // note that this is using a backtick, not ''
+
+});
+
+document.body.innerHTML = output;
+
+}, 1000); // 1000 is in miliSec
+
+}
 
 
+function createPost(post) {
+
+	return new Promise((resolve, reject) => {
+
+	setTimeout(() => {
+
+	posts.push(post);
+
+	const error = false; // if its an error then define it as false
+
+	if (!error) {
+
+	resolve();
+
+	} else {
+
+	reject('Error: something went wrong!')
+}}, 2000); // 2 seconds
+
+});
+
+}
 
 
+createPost({ title: 'Post Three', body: 'This is post three ' }).then(getPosts);
+```
 
+So what is happening here is that once the code runs, it will wait for the `resolve()` to happen, once that is successful, it will run the `createPost()` function  at the end of the last line 
 
+so if in the event if there is an error, it would be best to include a `.catch()` function to display a nicer error as follows: 
+```js
+createPost({ title: 'Post Three', body: 'This is post three ' }).then(getPosts).catch(err => console.log(err));
+```
 
+#### `Promise.all`
+`Promise.all` is basically to return a list of promises such as below: 
+```js
+// Promise.all
 
+const promise1 = Promise.resolve('Hello World');
 
+const promise2 = 10;
 
+const promise3 = new Promise((resolve, reject) =>
+	setTimeout(resolve, 2000, 'Goodbye'));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+Promise.all([promise1, promise2, promise3]).then(values => console.log(values));
 
 
