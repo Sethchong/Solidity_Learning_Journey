@@ -62,6 +62,44 @@ console.log(number);
 
 ````
 
+### What is HTML DOM? 
+it is essentially an Object Model for HTML and it defines HTML elements as object
+in other words, HTML DOM is the standard for how to get, change, add or delete html elements 
+
+HTML DOM methods are **actions** you can perform 
+HTML DOM properties are **values** that you can set or change 
+
+```html
+<html>  
+<body>  
+  
+<p id="demo"></p>  
+  
+<script>  
+document.getElementById("demo").innerHTML = "Hello World!";  
+</script>  
+  
+</body>  
+</html>
+```
+
+```getElementById```  is a method while ```innerHTML``` is a property 
+recall that``` id = 'demo'``` is something like a class - it is meant to use that for some basic formatting 
+
+### https://www.w3schools.com/js/js_htmldom_document.asp
+### https://www.youtube.com/watch?v=y17RuWkWdn8
+
+```js
+const body = document.body
+const div = document.createElement('div')
+div.innerText = "Hello World"
+
+body.appendChild(div)
+// take note that appendchild allows you to append only elements! not Strings! dont confuse it with append. 
+// append can append strings directly 
+```
+
+
 ### Callbacks, Promises, Async, Await Crashcourse
 
 so sometimes we want to extract something from the server and it would get a couple of seconds for the data to return to us but we also don't want to stall while we wait for the data and we want to continue and keep doing something 
@@ -70,6 +108,7 @@ so sometimes we want to extract something from the server and it would get a cou
 
 ```` javascript
 // callbacks / promises / async / await 
+
 
 ````
 
