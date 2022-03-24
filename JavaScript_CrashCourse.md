@@ -252,5 +252,96 @@ const promise3 = new Promise((resolve, reject) =>
 
   
 Promise.all([promise1, promise2, promise3]).then(values => console.log(values));
+*** 
+### Async / Await 
+this is just a cleaner way of doing promises 
+```js
+// first make a const of arrays
 
+const posts = [
 
+{ title: 'Post one', body: 'this is post one' },
+
+{ title: 'Post two', body: 'this is post two' }
+
+];
+
+  
+
+// => means function (), they are both the same thing
+
+  
+
+function getPosts() {
+
+setTimeout(() => {
+
+let output = '';
+
+// we want to loop through the posts here, gonna use for each method here
+
+posts.forEach((post, index) => {
+
+output += `<li> ${post.title} </li>`; // note that this is using a backtick, not ''
+
+});
+
+document.body.innerHTML = output;
+
+}, 1000); // 1000 is in miliSec
+
+}
+
+  
+
+function createPost(post) {
+
+return new Promise((resolve, reject) => {
+
+setTimeout(() => {
+
+posts.push(post);
+
+  
+
+const error = false;
+
+  
+
+if (!error) {
+
+resolve();
+
+} else {
+
+reject('Error: something went wrong!')
+
+}
+
+}, 2000); // 2 seconds
+
+});
+
+}
+
+  
+
+// createPost({ title: 'Post Three', body: 'This is post three ' }).then(getPosts);
+
+  
+
+// Async / Await
+
+// it is basically a more fancyful way to write promises
+
+async function init() {
+
+await createPost({ title: 'Post Three', body: 'This is post three ' });
+
+getPosts();
+
+}
+
+  
+init();
+```
