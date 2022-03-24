@@ -252,6 +252,8 @@ const promise3 = new Promise((resolve, reject) =>
 
   
 Promise.all([promise1, promise2, promise3]).then(values => console.log(values));
+```
+
 *** 
 ### Async / Await 
 this is just a cleaner way of doing promises 
@@ -344,4 +346,4 @@ getPosts();
 
   
 init();
-```
+
